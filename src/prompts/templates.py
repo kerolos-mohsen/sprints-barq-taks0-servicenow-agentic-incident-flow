@@ -13,9 +13,9 @@ USER_PROMPT_TEMPLATE = """KNOWLEDGE BASE ARTICLES:
 {kb_articles}
 
 DECISION RULES:
-- "respond": One of the articles CLEARLY and DIRECTLY solves the user's problem. Provide the exact solution from the matching article.
-- "ask": An article MIGHT apply, but the user's description is too vague or ambiguous to be certain. Ask ONE specific clarifying question to determine if the article applies.
-- "escalate": NO article covers this problem AT ALL. The issue must go to a human agent.
+- "respond": An article clearly solves the problem AND sufficient context was provided. Provide the exact solution from the matching article.
+- "ask": An article might be relevant, but the user's report is too brief, vague, or generic (for example: "it just doesn't work", or reporting an issue without error messages or context) to know for sure. You MUST choose "ask" and ask ONE specific clarifying question.
+- "escalate": NO article covers this problem AT ALL (such as leave requests, HR, hardware requests, or unknown systems). You MUST choose "escalate".
 
 INCIDENT TO CLASSIFY:
 Number: {number}

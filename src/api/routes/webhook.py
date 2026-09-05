@@ -7,7 +7,7 @@ Returns 202 Accepted immediately so ServiceNow doesn't timeout.
 
 import logging
 
-from fastapi import APIRouter, BackgroundTasks, Depends
+from fastapi import APIRouter, BackgroundTasks, Depends, Header
 
 from src.api.dependencies import get_processor
 from src.schemas.incident import IncidentPayload
@@ -23,6 +23,11 @@ router = APIRouter(prefix="/api/v1", tags=["webhook"])
 async def receive_incident(
     payload: IncidentPayload,
     background_tasks: BackgroundTasks,
+    x_webhook_secret: str | None = Header(
+        None,
+        alias="X-Webhook-Secret",
+        description="Shared secret configured in .env (e.g. task0-secret-key-2026)",
+    ),
     processor: IncidentProcessor = Depends(get_processor),
 ) -> WebhookResponse:
     """Receive an incident from the ServiceNow Business Rule.

@@ -51,7 +51,7 @@ class GeminiService:
         logger.info("[%s] Sending to Gemini for triage", incident.number)
 
         try:
-            response = self._model.generate_content(prompt)
+            response = await self._model.generate_content_async(prompt)
             raw_text = response.text.strip()
             logger.info("[%s] Gemini raw response: %s", incident.number, raw_text)
 

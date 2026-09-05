@@ -52,7 +52,7 @@ class ServiceNowService:
             return {
                 "work_notes": f"[AI Agent] Solution: {decision.message}",
                 "close_notes": decision.message,
-                "close_code": "Solved (Permanently)",
+                "close_code": "Solution provided",
                 "state": "6",  # Resolved
             }
         elif decision.decision == "ask":

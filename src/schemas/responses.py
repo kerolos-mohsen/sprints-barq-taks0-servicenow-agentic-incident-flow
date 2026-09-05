@@ -1,12 +1,13 @@
 """Response schemas for the webhook and error responses."""
 
+from typing import Literal
 from pydantic import BaseModel, Field
 
 
 class WebhookResponse(BaseModel):
     """Response returned by POST /webhook."""
 
-    status: str = Field(
+    status: Literal["accepted", "duplicate"] = Field(
         ...,
         description="Processing status: accepted or duplicate",
     )

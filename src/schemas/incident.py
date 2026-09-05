@@ -28,7 +28,7 @@ class IncidentPayload(BaseModel):
         min_length=1,
         description="One-line summary typed by the user",
     )
-    description: str = Field(
+    description: str | None = Field(
         default="",
         description="Longer detail, may be empty",
     )
