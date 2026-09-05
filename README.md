@@ -4,6 +4,15 @@ An automated IT incident triage pipeline connecting **ServiceNow Personal Develo
 
 ---
 
+## 📹 Live Demo Video
+
+📺 **Watch the 2–4 Minute End-to-End Walkthrough:**
+👉 **[Click Here to Watch the Demo Video](PASTE_DEMO_VIDEO_LINK_HERE)**
+
+*Demonstrating: Incident creation on live ServiceNow PDI, asynchronous webhook trigger via ngrok, Gemini reasoning, and automatic write-back for `respond`, `ask`, and `escalate`.*
+
+---
+
 ## Architecture Flow
 
 ```mermaid
@@ -210,8 +219,52 @@ Live test executions captured on ServiceNow PDI:
 
 ---
 
-## 8. Deliverables Directory Structure
+## 8. Repository Structure & Deliverables
 
-- `prompt.txt`: The exact system instruction and prompt template sent to Gemini for `INC0010008`.
-- `reflection.md`: Detailed engineering reflection on challenges, architectural decisions, and production roadmap.
-- `assets/`: Reference knowledge base (`kb_articles.json`), test incidents (`test_incidents.json`), Business Rule script (`business_rule.js`), and screenshots.
+```text
+.
+├── .env.example                  # Environment variable template (NFR2)
+├── .gitignore                    # Git ignore rules
+├── pyproject.toml                # uv & Python project configuration
+├── README.md                     # Comprehensive architecture & setup guide
+├── prompt.txt                    # Deliverable 4: Exact Gemini prompt payload
+├── reflection.md                 # Deliverable 5: Engineering reflection note
+├── assets/
+│   ├── business_rule.js          # ServiceNow Business Rule script
+│   ├── kb_articles.json          # 5 reference knowledge-base articles
+│   ├── payload_contract.json     # ServiceNow incident payload contract
+│   ├── test_incidents.json       # 3 required test scenarios
+│   └── screenshots/              # Deliverable 3: Incident verification images
+│       ├── incident_1_respond_before.png
+│       ├── incident_1_respond_after.png
+│       ├── incident_2_ask_before.png
+│       ├── incident_2_ask_after.png
+│       └── incident_3_escalate_after.png
+├── src/
+│   ├── main.py                   # FastAPI lifespan & app entrypoint
+│   ├── api/
+│   │   ├── dependencies.py       # FastAPI dependency injection
+│   │   ├── middleware/auth.py    # X-Webhook-Secret authentication middleware
+│   │   └── routes/
+│   │       ├── health.py         # GET /api/v1/health endpoint
+│   │       └── webhook.py        # POST /api/v1/webhook endpoint
+│   ├── core/
+│   │   ├── config.py             # Pydantic BaseSettings (.env loading)
+│   │   └── security.py           # Constant-time token comparison
+│   ├── prompts/
+│   │   ├── builder.py            # Dynamic prompt builder
+│   │   └── templates.py          # Grounded system instructions
+│   ├── schemas/
+│   │   ├── decision.py           # GeminiDecision schema (respond/ask/escalate)
+│   │   ├── incident.py           # IncidentPayload matching contract exactly
+│   │   └── responses.py          # WebhookResponse and ErrorResponse
+│   └── services/
+│       ├── gemini_service.py     # Google Gemini API integration
+│       ├── incident_processor.py # Orchestration & in-memory dedup guard (FR5)
+│       └── servicenow_service.py # ServiceNow Table API write-back (FR4)
+└── tests/                        # 43 automated tests (99% coverage)
+    ├── conftest.py
+    ├── unit/                     # Unit tests (schemas, dedup, security, prompts)
+    ├── integration/              # Integration tests (Gemini, ServiceNow, processor)
+    └── e2e/                      # End-to-end webhook execution tests
+```
