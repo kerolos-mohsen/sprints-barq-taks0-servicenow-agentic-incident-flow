@@ -50,6 +50,7 @@ class ServiceNowService:
         """
         if decision.decision == "respond":
             return {
+                "comments": f"[AI Agent] Solution:\n\n{decision.message}",
                 "work_notes": f"[AI Agent] Solution: {decision.message}",
                 "close_notes": decision.message,
                 "close_code": "Solution provided",

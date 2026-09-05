@@ -36,6 +36,7 @@ class TestServiceNowService:
         assert json_body["close_code"] == "Solution provided"
         assert "Printer power cycle" in json_body["close_notes"]
         assert "[AI Agent] Solution" in json_body["work_notes"]
+        assert "[AI Agent] Solution" in json_body["comments"]
 
     @pytest.mark.asyncio
     async def test_update_incident_ask(self, test_settings):
