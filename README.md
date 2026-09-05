@@ -7,7 +7,7 @@ An automated IT incident triage pipeline connecting **ServiceNow Personal Develo
 ## 📹 Live Demo Video
 
 📺 **Watch the 2–4 Minute End-to-End Walkthrough:**
-👉 **[Click Here to Watch the Demo Video on Google Drive](GOOGLE_DRIVE_VIDEO_LINK_HERE)**
+👉 **[Click Here to Watch the Demo Video on Google Drive](https://drive.google.com/file/d/1LhUREInXf-8YGHXW0HbAahOK83oN60j7/view?usp=sharing)**
 
 *Demonstrating: Incident creation on live ServiceNow PDI, asynchronous webhook trigger via ngrok, Gemini reasoning, and automatic write-back for `respond`, `ask`, and `escalate`.*
 
