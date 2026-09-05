@@ -60,7 +60,7 @@ GEMINI_MODEL=gemini-3.6-flash
 SERVICENOW_INSTANCE_URL=https://devXXXXXX.service-now.com
 SERVICENOW_USERNAME=agent
 SERVICENOW_PASSWORD=your_password_here
-WEBHOOK_SECRET=task0-secret-key-2026
+WEBHOOK_SECRET=[ENCRYPTION_KEY]
 ```
 
 ### Step 2: Start the FastAPI Server
@@ -185,8 +185,33 @@ uv run pytest --cov=src -v
 
 ---
 
-## 7. Deliverables
+## 7. Verification Screenshots
 
-- `prompt.txt`: The exact system instruction and prompt template sent to Gemini.
+Live test executions captured on ServiceNow PDI:
+
+### Scenario 1: `respond` — Network Printer Issue
+| Before Submit (Form Creation) | After Agent Processing (Resolved) |
+|---|---|
+| ![Incident 1 Before](assets/screenshots/incident_1_respond_before.png) | ![Incident 1 After](assets/screenshots/incident_1_respond_after.png) |
+
+---
+
+### Scenario 2: `ask` — Vague Email Issue
+| Before Submit (Form Creation) | After Agent Processing (Customer Comment) |
+|---|---|
+| ![Incident 2 Before](assets/screenshots/incident_2_ask_before.png) | ![Incident 2 After](assets/screenshots/incident_2_ask_after.png) |
+
+---
+
+### Scenario 3: `escalate` — Annual Leave Request (Out of Scope)
+| After Agent Processing (Internal Work Note) |
+|---|
+| ![Incident 3 After](assets/screenshots/incident_3_escalate_after.png) |
+
+---
+
+## 8. Deliverables Directory Structure
+
+- `prompt.txt`: The exact system instruction and prompt template sent to Gemini for `INC0010008`.
 - `reflection.md`: Detailed engineering reflection on challenges, architectural decisions, and production roadmap.
-- `assets/`: Reference knowledge base, test incidents, and Business Rule script.
+- `assets/`: Reference knowledge base (`kb_articles.json`), test incidents (`test_incidents.json`), Business Rule script (`business_rule.js`), and screenshots.
