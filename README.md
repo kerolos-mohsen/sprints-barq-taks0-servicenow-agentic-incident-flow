@@ -7,7 +7,9 @@ An automated IT incident triage pipeline connecting **ServiceNow Personal Develo
 ## 📹 Live Demo Video
 
 📺 **Watch the 2–4 Minute End-to-End Walkthrough:**
-👉 **[Click Here to Watch the Demo Video](PASTE_DEMO_VIDEO_LINK_HERE)**
+👉 **[Click Here to Play the Demo Video](assets/demo_video.mp4)**
+
+*(The demo video is embedded directly in the repository at `assets/demo_video.mp4` — click the link above to play it directly in GitHub's built-in media player!)*
 
 *Demonstrating: Incident creation on live ServiceNow PDI, asynchronous webhook trigger via ngrok, Gemini reasoning, and automatic write-back for `respond`, `ask`, and `escalate`.*
 
@@ -230,6 +232,7 @@ Live test executions captured on ServiceNow PDI:
 ├── prompt.txt                    # Deliverable 4: Exact Gemini prompt payload
 ├── reflection.md                 # Deliverable 5: Engineering reflection note
 ├── assets/
+│   ├── demo_video.mp4            # Deliverable 2: End-to-end demo video walkthrough
 │   ├── business_rule.js          # ServiceNow Business Rule script
 │   ├── kb_articles.json          # 5 reference knowledge-base articles
 │   ├── payload_contract.json     # ServiceNow incident payload contract
